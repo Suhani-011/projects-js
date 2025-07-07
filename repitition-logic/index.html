@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repitition Logic </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+            <div class="main-box d-flex justify-content-center align-items-center">
+                <div id="card">
+                    <div id="content-wrapper">
+
+                    </div>
+                    <div class="text-center mt-3 ">
+                        <div class="d-flex justify-content-between gap-5">
+                            <button class="btn-grad btn-logic" id="max">Max</button>
+                            <button class="btn-grad btn-logic" id="min">Min</button>
+                        </div>
+                        <div class="d-flex justify-content-between gap-5 mt-4">
+                            <button class="btn-grad btn-logic" id="random">Random</button>
+                            <button class="btn-grad btn-logic" id="clear">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+    <!-- jQuery -->
+    <script src="./assets/js/jquery-bundle.js"></script>
+    <!-- Script  -->
+    <script src="./assets/js/script.js"></script>
+    <script>
+        $(document).ready(function(){
+            let container = document.getElementById("content-wrapper");
+              let maxIndex;  
+              let minIndex;
+            // let inputElement = document.getElementById("number-input")
+            for(let i = 1; i <= 10 ; i++){
+                container.innerHTML += `<input type="number" class=" form-control" id="num-input-${i}"><br/>`;
+            }
+            $("#random").on("click",function(){
+                for(let i = 1 ; i <= 10 ;i++){
+                    document.getElementById(`num-input-${i}`).value = parseInt(Math.random()*100);
+                }
+                $(document.getElementById(`num-input-${minIndex}`)).removeClass("highlight");
+                $(document.getElementById(`num-input-${maxIndex}`)).removeClass("highlight");
+                
+            })
+            $("#clear").click(function(){
+                for(let i = 1 ; i <= 10 ;i++){
+                    document.getElementById(`num-input-${i}`).value = "";
+                }
+                $(document.getElementById(`num-input-${minIndex}`)).removeClass("highlight");
+                $(document.getElementById(`num-input-${maxIndex}`)).removeClass("highlight");
+            })
+            $("#max").click(function(){
+                let max=-Infinity;
+
+                for(let i = 1; i <= 10; i++) {
+                    let value = Number(document.getElementById(`num-input-${i}`).value);
+                    if(max < value) {
+                        max = value;
+                        maxIndex = i;
+                    }
+                }
+                
+                for(let i=1; i<=10; i++){
+                    let value= Number(document.getElementById(`num-input-${i}`).value);
+                    $(value[i]).removeClass("highlight");
+
+                }
+
+                if(maxIndex){
+                    $(document.getElementById(`num-input-${maxIndex}`)).addClass("highlight");
+                }
+                $(document.getElementById(`num-input-${minIndex}`)).removeClass("highlight");
+            })
+            $("#min").click(function(){
+                let min=Infinity;
+
+                for(let i = 1; i <= 10; i++){
+                value = Number(document.getElementById(`num-input-${i}`).value);
+                    if(min > value){
+                        min = value;
+                        minIndex = i;
+                    }
+                }
+                for(let i=1; i<=10; i++){
+                    let value= Number(document.getElementById(`num-input-${i}`).value);
+                    $(value[i]).removeClass("highlight");
+
+                }
+
+                if(minIndex){
+                    $(document.getElementById(`num-input-${minIndex}`)).addClass("highlight");
+                }
+                $(document.getElementById(`num-input-${maxIndex}`)).removeClass("highlight"); 
+            })
+        })
+    </script>
+</body>
+</html>
