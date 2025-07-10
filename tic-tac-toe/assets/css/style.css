@@ -1,0 +1,102 @@
+ /* font-family: "Fredericka the Great", serif;
+ font-family: "Frijole", system-ui; */
+.heading-bg {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    color: white;
+    z-index: 1;
+    font-family: 'Frijole', cursive;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0.08;
+    text-align: center;
+}
+.board{
+    width: 90vw;
+    max-width: 600px;
+    aspect-ratio: 1;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    height: 100vh;
+}
+html{
+    height: 100vh;
+    overflow-x: hidden;
+}
+body{
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+}
+.cell{
+    font-family: "Frijole", system-ui;
+    width: 100%;
+    aspect-ratio: 1;
+    font-size: 35px;
+    background-image: linear-gradient(-225deg, #7085B6 0%, #87A7D9 50%, #DEF3F8 100%);
+    font-weight: 600;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* background: rgba(255, 255, 255, 0.15); */
+    border-radius: 16px;
+    backdrop-filter: blur(4.2px);
+    -webkit-backdrop-filter: blur(4.2px);
+    border: 1px solid #87A7D9;
+}
+.col-4 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.game-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Bubble background */
+.bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bubble {
+    position: absolute;
+    background: radial-gradient(circle at 30% 30%, #ffffff55, #89CFF0);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float 7s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <!-- Font -->
+    <link rel="stylesheet" href="./assets/fonts/Fredericka_the_Great,Frijole/stylesheet.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Media query CSS -->
+    <link rel="stylesheet" href="./assets/css/media.css">
+</head>
+<body> 
+    <!-- Bubbles -->
+    <div class="bubbles" id="bubbles-container"></div>
+
+    <div class="game-container">
+        <div class="board position-relative">
+        <h2 class="heading-bg position-absolute">TIC TAC TOE</h2>
+        <div class="container">
+            <div class="row d-flex flex-wrap gy-sm-2 gy-1">
+                <div class="col-4">
+                    <button class="cell" id="b1"></button>
+                </div>
+                <div class="col-4">
+                    <button class="cell" id="b2"></button>
+                </div>
+                <div class="col-4">
+                    <button class="cell" id="b3"></button>
+                </div>
+                <div class="col-4">
+                    <button class="cell" id="b4"></button>
+                </div>
+                <div class="col-4">
+                    <button class="cell" id="b5"></button>
+                </div>
+                <div class="col-4">
+                    <button class="cell" id="b6"></button>
+                </div>
+                <div class="col-4">
+                    <button class="cell" id="b7"></button>
+                </div>
+                <div class="col-4">
+                    <button class="cell" id="b8"></button>
+                </div>
+                <div class="col-4">
+                    <button class="cell" id="b9"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Particle js -->
+    <script src="./assets/js/particle.js"></script>
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Jquery -->
+    <script src="./assets/js/jquery.js"></script>
+    <script>
+        let counter = 0;
+        function resetGame(){
+            counter = 0;
+            for(let i = 1; i <= 9;i++){
+                document.getElementById(`b${i}`).innerHTML = "";
+            }
+        }
+        function fireAlert(winner){
+            Swal.fire({
+                title : `Player ${winner} Won!`,
+                icon : "success",
+            });
+            resetGame();
+        }
+        function checkWin(symbol){
+            //Checking first row
+            let flag = true;
+
+            for(let i = 1 ; i <= 3 ; i++){
+                let val = document.getElementById(`b${i}`).innerHTML;
+                if(val != symbol){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                fireAlert(symbol);
+                return true;
+            }
+
+            //Checking second row
+            flag = true;
+
+            for(let i = 4 ; i <= 6 ; i++){
+                let val = document.getElementById(`b${i}`).innerHTML;
+                if(val != symbol){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                fireAlert(symbol);
+                return true;
+            }
+
+            //Checking third row
+            flag = true;
+
+            for(let i = 7 ; i <= 9 ; i++){
+                let val = document.getElementById(`b${i}`).innerHTML;
+                if(val != symbol){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                fireAlert(symbol);
+                return true;
+            }
+
+            //Checking first column
+            flag = true;
+
+            for(let i = 1 ; i <= 7 ; i = i+3){
+                let val = document.getElementById(`b${i}`).innerHTML;
+                if(val != symbol){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                fireAlert(symbol);
+                return true;
+            }
+
+            //Checking second column
+            flag = true;
+
+            for(let i = 2 ; i <= 8 ; i = i+3){
+                let val = document.getElementById(`b${i}`).innerHTML;
+                if(val != symbol){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                fireAlert(symbol);
+                return true;
+            }
+
+            //Checking third column
+            flag = true;
+
+            for(let i = 3 ; i <= 9 ; i = i+3){
+                let val = document.getElementById(`b${i}`).innerHTML;
+                if(val != symbol){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                fireAlert(symbol);
+                return true;
+            }
+
+            //Checking first diagnol
+            flag = true;
+
+            for(let i = 1 ; i <= 9 ; i = i+4){
+                let val = document.getElementById(`b${i}`).innerHTML;
+                if(val != symbol){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                fireAlert(symbol);
+                return true;
+            }
+
+            //Checking second diagnol
+            flag = true;
+
+            for(let i = 3 ; i <= 7 ; i = i+2){
+                let val = document.getElementById(`b${i}`).innerHTML;
+                if(val != symbol){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                fireAlert(symbol);
+                return true;
+            }
+
+            return false;
+        }
+
+        $(document).ready(function(){
+            $(".cell").on("click",function(e){
+                //let cell = e.target;
+                let cell = this;
+                
+                if(cell.innerHTML == ""){
+                    if(counter % 2 == 0){
+                        cell.innerHTML = "X";
+                    }else{
+                        cell.innerHTML = "O";
+                    }
+                    counter++;
+                }else{
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Oops...",
+                        text: "You cannot override the move!",
+                    });
+                }
+
+                if(counter >= 5){
+                    const win = checkWin(cell.innerHTML);
+
+                   if(counter == 9){
+                        if(win == false){
+                            Swal.fire("Game Draw! Click to play again...");
+                        }
+                        resetGame();
+                   }
+                }
+            })
+        })
+    </script>
+</body>
+</html>
