@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+*{
+    font-family: "Lugrasimo", cursive;
+    box-sizing: border-box;
+}
+.box{
+    border-radius: 10px;
+    padding:35px  50px;
+    background: #0f0c29; 
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+body, html{
+    height: 100vh;
+    overflow: hidden;
+   /* background-image: linear-gradient(to right, #0f0b36 0%, #d3a4bc  50%, #0f0b36  100%); */
+   background-image: radial-gradient(circle at center, #d4b6c0, #574c75, #110e2d);
+
+}
+:root{
+    --color-grey: #212529;
+}
+label{
+    color: #d7b9c2;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.font{
+    font-family: "Lugrasimo", cursive;
+    font-size: 14px;
+    text-transform: none;
+    text-decoration:underline;
+}
+.indexbox a{
+    color: #302b63;
+    text-transform: uppercase;
+    text-decoration:none;
+    font-family: "Frijole", system-ui;
+    /* font-family: "Fredericka the Great", serif; */
+    font-weight: 700;
+    font-size: 20px;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    height: 100vh;
+}
+.input-control{
+    color: var(--color-grey);
+    padding: 4px 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 8px;
+}
+.input-control:focus{
+    outline: none;
+    box-shadow: none;
+}
+.contentbox{
+    width: 80%;
+}
+.indexbox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 25px 35px;
+    background: #654ea3;  /* fallback for old browsers */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 10px;
+    width: 200px;
+    height: 170px;
+    background: -webkit-linear-gradient(to right, #eaafc8, #654ea3); 
+    background: linear-gradient(to right, #eaafc8, #654ea3); 
+}
+button {
+    font-family: "Frijole", system-ui;
+    background-image: linear-gradient(to right, #2c275c 0%, #d7b9c2  41%, #2c275c  100%);
+    width: 48%;
+    letter-spacing: 2px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    font-weight: 600;
+    background-size: 200% auto;
+    color: white;            
+    border-radius: 10px;
+    display: block;
+    border: 1px solid #2c275c;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+button:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+         
+.qbtn{
+    width: 40%;
+}
