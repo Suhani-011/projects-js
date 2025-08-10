@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css">
+    <link rel="stylesheet" href="./assets/fonts/stylesheet.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/media.css">
+</head>
+<body>
+    <div class="container-fluid">
+       <div class="todo d-flex justify-content-center align-items-center">
+         <form action="" class="todo-form">
+            <h2 class="heading text-center my-3">To  Do  List</h2>
+            <div class="d-flex align-items-center">
+                <input type="text" id="task" class="inputbox fs-5" placeholder="Add your Task">
+                <select name="" id="priority" required class="selectbox pe-5 ps-2 fs-7">
+                    <option value="">Please Select Priority</option>
+                    <option value="1">High</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Low</option>
+                </select>
+                <button id="add" type="submit" class="addbtn px-4">
+                    <i class="ri-add-box-fill"></i>
+                </button>
+            </div>
+            
+            <div id="task-container">
+                
+            </div>
+       </div>
+    </form>
+    </div>
+    <!-- Jquery -->
+    <script src="./assets/js/jquery.js"></script>
+    <!-- Nice Select -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+    <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            $('.selectbox').niceSelect();
+        });
+        let taskList = [];
+
+        function getPriority(id){
+            switch(parseInt(id)){
+                case 1:
+                    return `<span class="badge color1">High</span>`;
+                case 2:
+                    return `<span class="badge color2">Medium</span>`;
+                case 3:
+                    return `<span class="badge color3">Low</span>`;
+            }
+        }
+
+        $("#add").on("click",(e) => {
+
+            e.preventDefault();                 
+
+            let task = document.getElementById("task").value;
+            let priority = document.getElementById("priority").value;
+
+            if (task.trim() === "") {
+                Swal.fire("Please enter a task.");
+            return;
+            }
+
+            if (priority === "") {
+                Swal.fire("Please select the priority.");
+            return;
+        }
+
+            //let date = new Date();
+            let taskObj = {
+                id : Date.now(),
+                task,
+                priority
+            }
+            taskList.push(taskObj);
+
+            document.getElementById("task-container").innerHTML = "";
+
+            taskList.forEach((data,idx) => {
+                document.getElementById("task-container").innerHTML +=
+               `<div class="task-box d-flex align-items-center justify-content-between">
+                    <p>${idx+1}. ${data.task}  ${getPriority(data.priority)}</p>
+                    <button type="button" class="btn close-btn" data-id="${data.id}">
+                            <i class="ri-delete-bin-2-line"></i></i></button>
+                </div>`
+            });
+             $("#task-container").on("click", ".close-btn", function () {
+                const idToDelete = $(this).data("id");
+                taskList = taskList.filter(TaskObj => TaskObj.id !== idToDelete);
+
+                document.getElementById("task-container").innerHTML = "";
+                taskList.forEach((data, indx) => {
+                document.getElementById("task-container").innerHTML +=
+                `<div class="task-cbox d-flex align-items-center justify-content-between">
+                    <p>${indx + 1}. ${data.Task} ${getpriority(data.priority)}</p>
+                    <button type="button" class="btn close-btn" data-id="${data.id}"><i class="ri-delete-bin-2-line"></i></i></button>
+                </div>`;
+                });
+            });
+            $("#task").val("");
+            $("#priority").val("");
+            $("#priority").niceSelect('update');
+        })
+    </script>
+    
+</body>
+</html>

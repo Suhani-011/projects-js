@@ -1,0 +1,98 @@
+ /* font-family: "Marck Script", cursive; */
+body,html{
+    height: 100% ;
+    overflow: hidden;
+    background: #642B73;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #C6426E, #642B73); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.todo{
+    height: 100vh;
+}
+.heading{
+    font-family: "Rubik Puddles", system-ui;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+.todo-form{
+    padding:20px;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.inputbox{
+    border-radius:25px 0px 0px 25px;
+    outline: none;
+    background-color: #f0f0f0;
+    font-family: "Marck Script", cursive;
+}
+.selectbox,.inputbox,.addbtn{
+    height: 60px;
+    aspect-ratio: 1;
+    border: 0px;
+    padding: 0px 20px;
+}
+.inputbox:active,.selectbox:focus{
+    outline: none;
+    box-shadow: none;
+}
+.addbtn{
+    border-radius: 0px 25px 25px 0px;
+    background-color: #9a3870;
+}
+.addbtn i{
+    color: white;
+    font-size: 20px;
+}
+.selectbox{
+    border-radius: 0px;
+    height: 60px;
+    line-height: 60px;
+    font-family:cursive
+}
+.task-box{
+    /* background-color: #f1f1f1; */
+    background-color: #C17CA5;
+    padding: 10px 25px;
+    margin-top: 15px;
+    font-size: 20px;
+    border-radius: 25px;
+    font-family:cursive;
+}
+.task-box p{
+    margin-bottom: 0px;
+}
+.task-box button:focus,.task-box button:active{
+    outline:none;
+    border: none;
+}
+.badge{
+    font-family:  "Marck Script", cursive;;
+    border-radius: 25px;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    margin-left: 10px;
+}
+.color1{
+    background-color:#9a3870;
+}
+.color2{
+    background-color:#b6578d;
+}
+.color3{
+    background-color:#d587b6;
+}
+.close-btn{
+    font-size: 20px;
+    background-color:#9a3870;
+    border-radius: 50%;
+    color: white;
+}
+.close-btn:hover{
+    background-color: #ffff;
+    color: #9a3870;
+}
