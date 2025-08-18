@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    
+    <div class="container-fluid">
+        <div class="box d-flex justify-content-center align-items-center flex-column">
+            <div class="time-box mb-3">
+                <!-- <h4 class="text-center py-3">TIMER</h4> -->
+                <form action="">
+                    <div class="d-flex gap-2 justify-content-center align-items-center">
+                        <div class="">
+                            <input type="number" class="form-control" id="hour" min="0" max="24" placeholder="HH">
+                        </div>
+                        <div class="">
+                            <input type="number" class="form-control" id="min" min="0" max="59" placeholder="MM">
+                        </div>
+                        <div class="">
+                            <input type="number" class="form-control" id="sec" min="0" max="59" placeholder="SS">
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 justify-content-center align-items-center pt-4">
+                        <button type="button" class="time-btn" id="start-btn">Start</button>
+                        <button type="button" class="time-btn" id="pause-btn">Pause</button>
+                        <button type="button" class="time-btn" id="reset-btn">Reset</button>
+                    </div>
+                </form>
+                <audio id="tick" src="./assets/audio/timer-clock-ticking-313948.mp3"></audio>
+                <!-- <audio id="tick" src="./assets/audio/peaceful-piano-loop-6903.mp3"></audio> -->
+                <audio id="beep" src="./assets/audio//alarm-104243_f1HAmQdL.mp3"></audio>
+            </div>
+            <div>
+                <p id="quote" class=""></p>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap Js -->
+    <script src="./assets/js/bootstrap.js"></script>
+    <!-- Jquey Js -->
+    <script src="./assets/js/jquery.js"></script>
+
+    <script>
+        let startBtn = document.getElementById("start-btn");
+        let pauseBtn = document.getElementById("pause-btn");
+        let resetBtn = document.getElementById("reset-btn");
+
+        let hourInput = document.getElementById("hour");
+        let minInput = document.getElementById("min");
+        let secInput = document.getElementById("sec");
+
+        let startAudio = document.getElementById("tick");
+        startAudio.loop = true;  
+
+        let stopAudio = document.getElementById("beep");
+        stopAudio.loop = false;
+        
+        let timerInterval ;
+        let totalSeconds = 0;
+        let isPaused = false;
+        let isStarted = false;
+
+        const quotes = [
+            '<b>"Believe in yourself!"🌟</b>',
+            '"Every second counts ⏳"',
+            '"Stay <i>focused</i> and never give up 💪"',
+            '"Your time is limited, don’t waste it ⌛"',
+            '"Discipline beats motivation 🔥"',
+            '"Push harder than yesterday 💥"',
+            '"Stay strong, the results will follow ✨"',
+            '"One step at a time 🏃‍♀️"',
+            '"Hard work pays off 💯"',
+            '"Great things take time ⌚"'
+        ];
+
+
+        function setInputsReadOnly(state) {
+            hourInput.readOnly = state;
+            minInput.readOnly = state;
+            secInput.readOnly = state;
+        }
+
+        function formatTime(totalSeconds){
+            let hour = parseInt(totalSeconds / 3600);
+            totalSeconds = totalSeconds % 3600;
+
+            let minute = parseInt(totalSeconds / 60);
+            totalSeconds = totalSeconds % 60;
+
+            let second = parseInt(totalSeconds);
+
+            hourInput.value = hour.toString().padStart(2, "0");
+            minInput.value = minute.toString().padStart(2, "0");
+            secInput.value = second.toString().padStart(2, "0");
+        }
+        function startTimer(){
+            if (!isStarted) {
+                // First time start
+                let hour = parseInt(hourInput.value || 0);
+                let minute = parseInt(minInput.value || 0);
+                let second = parseInt(secInput.value || 0);
+
+                totalSeconds = (hour * 3600) + (minute * 60) + second;
+                setInputsReadOnly(true);
+                isStarted = true;
+
+                startBtn.textContent = "Resume";//after first start, show Resume
+            }
+
+            if (totalSeconds > 0) {
+                isPaused = false;
+                clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                if (!isPaused && totalSeconds > 0)
+                {
+                    totalSeconds--;
+                    formatTime(totalSeconds);
+                    document.getElementById("quote").innerHTML = "";
+
+                } else if (totalSeconds <= 0)
+                {
+                    hourInput.value = "";  
+                    minInput.value = "";
+                    secInput.value = "";
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+
+                    startAudio.pause();
+                    startAudio.currentTime = 0; 
+
+                    stopAudio.play();
+
+                    setInputsReadOnly(false);
+                    isStarted = false;
+
+                    startBtn.textContent = "Start"; //  back to Start when finished
+
+                    let randomIndex = parseInt(Math.random() * quotes.length);
+                    document.getElementById("quote").innerHTML = quotes[randomIndex];
+                }
+            }, 1000)
+            startAudio.play();
+            }
+        }
+        function pauseTimer() {
+            isPaused = true;
+            clearInterval(timerInterval);
+            startAudio.pause();
+        }
+        function resetTimer() {
+
+            clearInterval(timerInterval);
+            timerInterval = null;
+            totalSeconds = 0;
+
+            hourInput.value = "";  
+            minInput.value = "";
+            secInput.value = "";
+
+            setInputsReadOnly(false);
+            isPaused = false;
+            isStarted = false;
+
+            startAudio.pause();
+            startAudio.currentTime = 0;//rewind ticking
+            stopAudio.pause();
+            stopAudio.currentTime = 0;//rewind beep
+
+            startBtn.textContent = "Start";
+
+            document.getElementById("quote").innerHTML = "";
+
+        }
+        startBtn.addEventListener("click", startTimer);
+        pauseBtn.addEventListener("click", pauseTimer);
+        resetBtn.addEventListener("click", resetTimer);
+
+    </script>
+</body>
+</html>

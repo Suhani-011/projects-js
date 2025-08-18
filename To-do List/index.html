@@ -43,13 +43,14 @@
     <!-- Sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.selectbox').niceSelect();
         });
+
         let taskList = [];
 
-        function getPriority(id){
-            switch(parseInt(id)){
+        function getPriority(id) {
+            switch (parseInt(id)) {
                 case 1:
                     return `<span class="badge color1">High</span>`;
                 case 2:
@@ -59,58 +60,55 @@
             }
         }
 
-        $("#add").on("click",(e) => {
+        function renderTasks() {
+            document.getElementById("task-container").innerHTML = "";
+            taskList.forEach((data, idx) => {
+                document.getElementById("task-container").innerHTML +=
+                    `<div class="task-box d-flex align-items-center justify-content-between">
+                        <p>${idx + 1}. ${data.task} ${getPriority(data.priority)}</p>
+                        <button type="button" class="btn close-btn" data-id="${data.id}">
+                            <i class="ri-delete-bin-2-line"></i>
+                        </button>
+                    </div>`;
+            });
+        }
 
-            e.preventDefault();                 
+        $("#add").on("click", (e) => {
+            e.preventDefault();
 
             let task = document.getElementById("task").value;
             let priority = document.getElementById("priority").value;
 
             if (task.trim() === "") {
                 Swal.fire("Please enter a task.");
-            return;
+                return;
             }
 
             if (priority === "") {
                 Swal.fire("Please select the priority.");
-            return;
-        }
+                return;
+            }
 
-            //let date = new Date();
             let taskObj = {
-                id : Date.now(),
+                id: Date.now(),
                 task,
                 priority
-            }
+            };
+
             taskList.push(taskObj);
+            renderTasks();
 
-            document.getElementById("task-container").innerHTML = "";
-
-            taskList.forEach((data,idx) => {
-                document.getElementById("task-container").innerHTML +=
-               `<div class="task-box d-flex align-items-center justify-content-between">
-                    <p>${idx+1}. ${data.task}  ${getPriority(data.priority)}</p>
-                    <button type="button" class="btn close-btn" data-id="${data.id}">
-                            <i class="ri-delete-bin-2-line"></i></i></button>
-                </div>`
-            });
-             $("#task-container").on("click", ".close-btn", function () {
-                const idToDelete = $(this).data("id");
-                taskList = taskList.filter(TaskObj => TaskObj.id !== idToDelete);
-
-                document.getElementById("task-container").innerHTML = "";
-                taskList.forEach((data, indx) => {
-                document.getElementById("task-container").innerHTML +=
-                `<div class="task-cbox d-flex align-items-center justify-content-between">
-                    <p>${indx + 1}. ${data.Task} ${getpriority(data.priority)}</p>
-                    <button type="button" class="btn close-btn" data-id="${data.id}"><i class="ri-delete-bin-2-line"></i></i></button>
-                </div>`;
-                });
-            });
             $("#task").val("");
             $("#priority").val("");
             $("#priority").niceSelect('update');
-        })
+        });
+
+        $("#task-container").on("click", ".close-btn", function () {
+            const idToDelete = $(this).data("id");
+            taskList = taskList.filter(taskObj => taskObj.id !== idToDelete);
+            renderTasks();
+        });
+            
     </script>
     
 </body>
