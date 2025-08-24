@@ -3,6 +3,7 @@ body,html{
     height: 100vh;
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
     align-items: center;
 }
 body{
