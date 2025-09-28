@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - superfood</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="./assets/fonts/Open_Sans,Signika/stylesheet.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/media.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header-banner">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary pt-3">
+            <div class="container d-flex justify-content-between align-items-center">
+                <!-- Logo -->
+                <a class="navbar-brand" href="./index.html">
+                    <img src="./assets/images/logo.png" alt="Logo" class="img-fluid logo w-50 ">
+                </a>
+
+                <!-- Navbar Items -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-5 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Elements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shop</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="home-icons d-flex justify-content-between align-items-center gap-4 ps-4">
+                    <span class="position-relative cart-icon" onclick="window.location='./cart.html'">
+                        <i class="ri-shopping-cart-2-fill"></i>
+                        <span class="position-absolute  start-100 translate-middle badge rounded-pill bg-light text-dark" id="counter">
+                            0
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </span>
+                    <i class="ri-search-line d-lg-flex d-none"></i>
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+        </nav>
+        <!-- Home content -->
+        <div class="header-content container">
+            <h1>Put the Kettle On!</h1>
+            <p>Etiam convallis, felis quis dapibus dictum, libero mauris luctus,non fringilla purus ligula non justo. Non fringilla purus</p>
+            <button class="view-btn mt-3 d-sm-flex d-none">VIEW FEATURES</button>
+        </div>
+    </header>
+    <!-- Cart Section -->
+    <section class="cart-sec">
+        <div class="container">
+            <div class="text-center text-primary cart-head">
+                <h2>Easy to Customize</h2>
+                <h5 class="context mt-3">
+                    The Visual Composer drag-and-drop page builder is packed with all Elated Themes. Setting up your website and creating pages full of stunning content.
+                </h5>
+            </div>
+            <div class="container mt-5">
+                <div class="row gy-4" id="product-row">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Layout Section -->
+    <section class="layout-sec">
+        <div class="bg-layout">
+            <div class="container">
+                <div class="text-center text-primary cart-head layout">
+                    <h2>Beautiful Blog Layouts</h2>
+                    <h5 class="context mt-3">
+                        The Elated Slider comes with video and image support, as well as full screen and parallax functionality. Display your essential content in style. Add sections with the stunning parallax effect to your pages. Make browsing your website an exciting and intuitive experience.
+                    </h5>
+                    <button class="view-btn mt-3">VIEW FEATURES</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="fw-bold text-white">SuperFood<span class="text-success">🌿</span></h4>
+                    <p class="text-grey small mt-3">
+                    At vero eos et accusam et justo duo dolo res et ea rebum. Stet clita kasd guber gren.
+                    Aenean sollici tudin lorem quis bibendum dum auci elit clita.
+                    </p>
+                    <p class="text-grey mb-2">
+                        <i class="ri-phone-fill me-2"></i> +387643932728
+                    </p>
+                    <p class="text-grey">
+                        <i class="ri-map-pin-fill me-2"></i> Eighth Avenue 487, New York
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <form>
+                    <input type="text" class="form-control mb-3" placeholder="Name">
+                    <input type="email" class="form-control mb-3" placeholder="Email">
+                    <textarea class="form-control mb-3" rows="3" placeholder="Comment"></textarea>
+                    <button type="submit" class="btn btn-teal w-100 fw-bold">SUBMIT</button>
+                    </form>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold text-white mb-3">Twitter feed</h6>
+                    <p class="text-grey small">Couldn't connect with Twitter</p>
+                    <div class="d-flex gap-3 mt-3 social-icons">
+                    <i class="ri-instagram-line"></i>
+                    <i class="ri-twitter-fill"></i>
+                    <i class="ri-facebook-fill"></i>
+                    <i class="ri-tumblr-fill"></i>
+                    <i class="ri-vimeo-fill"></i>
+                    <i class="ri-linkedin-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center py-3">
+            <p class="text-grey mb-0 small">
+            ©2017 Qode Interactive, All Rights Reserved
+            </p>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="./assets/js/bootstrap.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

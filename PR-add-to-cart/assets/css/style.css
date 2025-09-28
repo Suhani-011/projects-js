@@ -1,0 +1,243 @@
+:root{
+    --font-sans: "Open Sans", sans-serif;
+    --font-signicka : "Signika", sans-serif;;
+}
+
+*{
+    font-family: var(--font-signicka);
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+.nav-item a{
+    font-size: 17px;
+    font-weight: 600;
+}
+.home-icons{
+    font-size: 20px;
+    font-weight: 800;
+    border-left: 1px solid white;
+}
+.navbar .nav-link,
+.navbar i {
+    color: white !important; 
+    transition: all 0.3s ease-in-out;
+}
+
+.logo {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease-in-out;
+}
+.badge{
+    font-size: 0.6rem;
+    line-height: 1;      
+    min-width: 10px;    
+    min-height: 10px; 
+    color: #3a3a3a;
+    top: 4px; 
+}
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+.navbar.scrolled {
+    background: white !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar.scrolled .badge {
+    background: #3a3a3a !important; 
+    color: #fff !important;
+}
+.navbar.scrolled .nav-link,
+.navbar.scrolled i {
+    color: #3a3a3a !important;
+}
+
+.navbar.scrolled .logo {
+    filter: none;
+}
+.header-banner {
+    background: url('../images/home-banner.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 87vh;
+    color: white; 
+    position: relative;
+}
+
+.header-content {
+    padding-top: 150px; 
+    padding-left: 160px;
+}
+.header-content h1{
+    font-size: 78px;
+    font-weight: 800;
+    max-width: 350px;
+}
+.header-content p{
+    font-size: 18px;
+    max-width: 570px;
+    font-family: var(--font-sans);
+}
+.navbar {
+    background: transparent !important;
+}
+.view-btn{
+    border: 2px solid #00bdbb;
+    background-color: #50c5bb;
+    color: white;
+    padding:17px 52px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.cart-icon{
+    cursor: pointer;
+}
+.cart-sec{
+    padding-top: 110px !important;
+    padding-bottom: 61px !important;
+}
+.cart-head{
+    padding: 0% 23% 0% 23%;
+}
+h2{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 48px;
+}
+.context{
+    color: #808285;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: var(--font-sans);
+    line-height: 30px;
+}
+h4{
+    font-size: 21px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    font-weight: 600;
+    line-height: 25px;
+}
+.card-content{
+    margin: 25px 0px;
+}
+.stars{
+    width: 30%;
+}
+.tea-price{
+    font-weight: 600;
+}
+.cart-img{
+    transition:all linear 0.3s;
+    cursor: pointer;
+}
+.cart-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.cart-img:hover .cart-btn {
+    opacity: 1;
+}
+.cart-btn button {
+    padding: 15px 50px;
+    border: none;
+    color: #fff;
+    background-color: #00bdbb;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.cart-btn button:hover {
+    background-color: #fff;
+    color: #000; 
+}
+.layout{ 
+    padding: 111px 23% 130px 23%; 
+}
+.bg-layout{
+    background: url('../images/layout-bg.jpg') no-repeat center center;
+    background-size: cover !important;
+}
+.add-cart-sec{
+    padding: 150px 0px 60px 0px;
+    background-color: #fafafa;
+}
+.cart-header h2{
+    font-size: 24px;
+    color: #3a3a3a;
+}
+.checkout{
+    padding-top: 40px;
+}
+.product-img{
+    height: 100px;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+#main-total{
+    color: #b4b9c0;
+    font-weight: 600;
+}
+.footer-section {
+  background-color: #2b2b2b;
+  color: #ccc;
+  font-family: "Open Sans", sans-serif;
+}
+.footer-section h4,
+.footer-section h6 {
+  color: #fff;
+}.footer-section p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.footer-section .form-control {
+  background-color: transparent;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 14px;
+}
+.footer-section .form-control::placeholder {
+  color: #aaa;
+}
+.footer-section .form-control:focus {
+  border-color: #00c5b9;
+  box-shadow: none;
+}
+.btn-teal {
+  background-color: #00c5b9;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn-teal:hover {
+  background-color: #009d94;
+}
+.footer-section .social-icons i {
+  color: #ccc;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.footer-section .social-icons i:hover {
+  color: #00c5b9;
+}
+.footer-bottom {
+  background-color: #232323;
+}
+.text-grey{
+    color: #a29e99;
+}
+

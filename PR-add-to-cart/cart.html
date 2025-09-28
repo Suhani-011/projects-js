@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add-to-cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="./assets/fonts/Open_Sans,Signika/stylesheet.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/media.css">
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar scrolled navbar-expand-lg bg-body-tertiary pt-3">
+            <div class="container d-flex justify-content-between align-items-center">
+                <!-- Logo -->
+                <a class="navbar-brand" href="./index.html">
+                    <img src="./assets/images/logo.png" alt="Logo" class="img-fluid logo w-50 ">
+                </a>
+
+                <!-- Navbar Items -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-5 pe-3 text-dark">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Elements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shop</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="home-icons d-flex justify-content-between align-items-center gap-4 ps-4">
+                    <span class="position-relative">
+                        <i class="ri-shopping-cart-2-fill"></i>
+                        <span class="position-absolute  start-100 translate-middle badge rounded-pill bg-light text-dark"
+                         id="counter">
+                            0
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </span>
+                    <i class="ri-search-line d-lg-flex d-none"></i>
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Cart Section -->
+    <section class="add-cart-sec">
+        <div class="container">
+            <div class="cart-header">
+                <h2>Cart</h2>
+            </div>
+        </div>
+    </section>
+    <!-- Checkout Section -->
+    <section>
+        <div class="container">
+            <div class="checkout table-responsive">
+                <table class="table align-middle text-center">
+                    <thead>
+                        <tr>
+                            <th>PRODUCT</th>
+                            <th>PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>SUBTOTAL</th>
+                            <th>TOTAL</th>
+                            <th>DELETE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-container">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="empty-cart" style="display: none; text-align: center; margin-top: 40px;">
+  <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" 
+       alt="Empty Cart" 
+       style="width:200px;">
+  <p style="font-size: 18px; color: gray;">Your cart is empty</p>
+</div>
+
+        <div class="container">
+            <div class="cart-totals mt-5">
+                <h5 class="fw-bold mb-4">CART TOTALS</h5>
+                <hr>
+                <div class="d-flex  align-items-center mb-3">
+                    <span class="fw-semibold pe-5">Total</span>
+                    <span class="fs-5" id="main-total"></span>
+                </div>
+                <hr>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script src="./assets/js/cart.js"></script>
+</body>

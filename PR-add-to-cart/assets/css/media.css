@@ -1,0 +1,91 @@
+@media(max-width : 992px) {
+    .header-content {
+        padding-left: 30px;
+    }
+    .cart-btn button{
+        padding: 10px 35px;
+    }
+    .cart-head {
+    padding: 0% 13% 0% 13%;
+    }
+    .context{
+        font-size: 16px;
+    }
+    .layout{
+    padding: 81px 3% 80px 3%;
+}
+}
+@media(max-width : 756px) {
+    .header-content {
+        padding-left: 0px;
+    }
+    .header-content h1{
+        font-size: 68px;
+    }
+    .header-content p{
+        font-size: 18px;
+    }
+    .cart-totals {
+    text-align: center;
+  }
+  .cart-totals hr {
+    margin: 1rem auto;
+    width: 80%;
+  }
+  .cart-totals .d-flex {
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+@media(max-width : 576px) {
+    
+    .header-content {
+        padding-top: 0;
+        padding-left: 0px;   
+        min-height: 87vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .header-content h1{
+        font-size: 60px;
+        max-width: 350px;
+    }
+    .header-content p{
+        font-size: 14px;
+        max-width: 370px;
+    }
+    .container{
+        padding: 0px 40px;
+    }
+    .navbar .container {
+        flex-wrap: nowrap;
+    }
+    .cart-head {
+    padding: 0% 3% 0% 3%;
+    }
+    .context{
+        font-size: 14px;
+    }
+    h2{
+        font-size: 30px;
+    }
+    .layout{
+    padding: 50px 0px;
+    }
+    table thead {
+    display: none;
+  }
+  table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  table td {
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+  }
+}
