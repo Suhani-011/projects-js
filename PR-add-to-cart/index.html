@@ -26,7 +26,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-5 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pages</a>
@@ -75,6 +75,11 @@
                 </h5>
             </div>
             <div class="container mt-5">
+                <div class="d-flex justify-content-end mb-3 gap-2">
+                    <button class="btn btn-outline-success" onclick="sortCartAsc()">Sort by Price ↑</button>
+                    <button class="btn btn-outline-danger" onclick="sortCartDesc()">Sort by Price ↓</button>
+                </div>
+
                 <div class="row gy-4" id="product-row">
                     
                 </div>

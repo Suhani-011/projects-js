@@ -85,7 +85,9 @@ function addToCart(productId){
 
 const productRow = document.getElementById("product-row");
 
-products.forEach((product,idx)=>{
+function displayCartItems(){
+    productRow.innerHTML = "";
+    products.forEach((product,idx)=>{
     productRow.innerHTML += `
     <div class="col-xl-3 col-md-4 col-sm-6">
         <div>
@@ -104,9 +106,20 @@ products.forEach((product,idx)=>{
     </div>
     `
 })
+}
 updateCartcount();
 
+function sortCartAsc() {
+    products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+    displayCartItems();
+}
 
+function sortCartDesc() {
+    products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    displayCartItems();
+}
+
+displayCartItems();
 
 window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");

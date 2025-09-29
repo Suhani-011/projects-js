@@ -2,7 +2,25 @@ const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const counter = document.getElementById("counter");
 const cartContainer = document.getElementById("cart-container");
 const mainTotal = document.getElementById("main-total");
+const emptyCart = document.getElementById("empty-cart");
+const tableSection = document.getElementById("cart-table-section");
 
+function checkCart(){
+    if(cart.length == 0){
+
+    tableSection.style.display = "none";
+
+    emptyCart.innerHTML = `
+    <div class="d-flex justify-content-center align-items-center">
+        <img src="./assets/images/empty-cart.png" alt="Empty Cart">
+    </div>
+    `;
+    }else{
+        emptyCart.innerHTML = "";
+        tableSection.style.display = "block";
+        displayContainerItems();
+    }
+}
 // ---------- DISPLAY FUNCTION ----------
 function displayContainerItems() {
     cartContainer.innerHTML = ""; 
@@ -25,7 +43,7 @@ function displayContainerItems() {
             </td>
 
             <!-- Price -->
-            <td>$${prod.price}</td>
+            <td>$${prod.price * prod.quantity}</td>
 
             <!-- Quantity -->
             <td>
@@ -65,6 +83,7 @@ function removeProduct(idx) {
     cart.splice(idx, 1);
     saveCart();
     displayContainerItems();
+    checkCart();
 }
 
 // ---------- CLEAR CART ----------
@@ -72,6 +91,7 @@ function clearCart() {
     cart.splice(0);
     saveCart();
     displayContainerItems();
+    checkCart();
 }
 
 // ---------- UPDATE QUANTITY ----------
@@ -84,6 +104,5 @@ function updateQuantity(idx, value) {
         displayContainerItems();
     }
 }
-
 // ---------- INITIALIZE ----------
-document.addEventListener("DOMContentLoaded", displayContainerItems);
+document.addEventListener("DOMContentLoaded", checkCart);

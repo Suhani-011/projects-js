@@ -27,7 +27,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-5 pe-3 text-dark">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Home</a>
+                            <a class="nav-link text-dark" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pages</a>
@@ -71,33 +71,32 @@
     </section>
     <!-- Checkout Section -->
     <section>
-        <div class="container">
-            <div class="checkout table-responsive">
-                <table class="table align-middle text-center">
-                    <thead>
-                        <tr>
-                            <th>PRODUCT</th>
-                            <th>PRICE</th>
-                            <th>QUANTITY</th>
-                            <th>SUBTOTAL</th>
-                            <th>TOTAL</th>
-                            <th>DELETE</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cart-container">
+        <div id="cart-table-section">
+            <div class="container">
+                <div class="checkout table-responsive">
+                    <table class="table align-middle text-center">
+                        <thead>
+                            <tr>
+                                <th>PRODUCT</th>
+                                <th>PRICE</th>
+                                <th>QUANTITY</th>
+                                <th>SUBTOTAL</th>
+                                <th>TOTAL</th>
+                                <th>DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-container">
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div id="empty-cart" style="display: none; text-align: center; margin-top: 40px;">
-  <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" 
-       alt="Empty Cart" 
-       style="width:200px;">
-  <p style="font-size: 18px; color: gray;">Your cart is empty</p>
-</div>
-
-        <div class="container">
+        <div id="empty-cart">
+            
+        </div>
+        
+        <div class="container mb-5">
             <div class="cart-totals mt-5">
                 <h5 class="fw-bold mb-4">CART TOTALS</h5>
                 <hr>
@@ -107,9 +106,53 @@
                 </div>
                 <hr>
             </div>
-
         </div>
     </section>
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="fw-bold text-white">SuperFood<span class="text-success">🌿</span></h4>
+                    <p class="text-grey small mt-3">
+                    At vero eos et accusam et justo duo dolo res et ea rebum. Stet clita kasd guber gren.
+                    Aenean sollici tudin lorem quis bibendum dum auci elit clita.
+                    </p>
+                    <p class="text-grey mb-2">
+                        <i class="ri-phone-fill me-2"></i> +387643932728
+                    </p>
+                    <p class="text-grey">
+                        <i class="ri-map-pin-fill me-2"></i> Eighth Avenue 487, New York
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <form>
+                    <input type="text" class="form-control mb-3" placeholder="Name">
+                    <input type="email" class="form-control mb-3" placeholder="Email">
+                    <textarea class="form-control mb-3" rows="3" placeholder="Comment"></textarea>
+                    <button type="submit" class="btn btn-teal w-100 fw-bold">SUBMIT</button>
+                    </form>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold text-white mb-3">Twitter feed</h6>
+                    <p class="text-grey small">Couldn't connect with Twitter</p>
+                    <div class="d-flex gap-3 mt-3 social-icons">
+                    <i class="ri-instagram-line"></i>
+                    <i class="ri-twitter-fill"></i>
+                    <i class="ri-facebook-fill"></i>
+                    <i class="ri-tumblr-fill"></i>
+                    <i class="ri-vimeo-fill"></i>
+                    <i class="ri-linkedin-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center py-3">
+            <p class="text-grey mb-0 small">
+            ©2017 Qode Interactive, All Rights Reserved
+            </p>
+        </div>
+    </footer>
 
 
     <script src="./assets/js/cart.js"></script>
