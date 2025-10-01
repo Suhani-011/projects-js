@@ -1,0 +1,12 @@
+.box{
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 20px;
+    width: 400px;
+}
+.box-1{
+    width: 900px;
+}
+.container{
+    height: 100vh;
+}
