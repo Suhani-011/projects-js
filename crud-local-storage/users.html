@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"    rel="stylesheet"/>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <h1>Users Info</h1>
+
+    <div class="container">
+        <table class="table table-dark table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>No.  </th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+        
+            </tbody>
+        </table>
+        <a href="./index.html" class="btn btn-danger">Back</a>
+    </div>
+    <script>
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        function deleteUser(idx){
+            users.splice(idx,1);
+
+            localStorage.setItem("users",JSON.stringify(users))
+
+            displayUsers();
+        }
+
+        function editUser(idx){
+            localStorage.setItem("editIdx",idx);    
+            window.location = "./index.html";
+        }
+
+        function displayUsers(){
+            let data = document.getElementById("data");
+            data.innerHTML= "";
+            
+            users.forEach((user,idx) => {
+                data.innerHTML += `
+                <tr>
+                    <td>${idx + 1}</td>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.course}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick = "deleteUser(${idx})">
+                            <i class="ri-delete-bin-line"></i>
+                            </button>
+                        <button class="btn btn-primary" onclick = "editUser(${idx})">
+                            <i class="ri-pencil-fill"></i>
+                        </button>
+                    </td>
+                </tr>`
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded",function(){
+            localStorage.removeItem("editIdx");
+            displayUsers();
+        })
+    </script>
+</body>
+</html>

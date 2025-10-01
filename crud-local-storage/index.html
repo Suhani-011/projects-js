@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crud</title>
+
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h4>CRUD Operation</h4>
+        <form action="" id="form">
+            <div>
+                <label for="name"> Name : </label>
+                <input type="text" id="name" required>
+            </div>
+            <br>
+            <div>
+                <label for="email"> Email : </label>
+                <input type="email" id="email" required>
+            </div>
+            <br>
+            <div>
+                <label for="course"> Course : </label>
+                <select name="course" id="course" required>
+                    <option value="">Please select course: </option>
+                    <option value="Full Stack Dev">Full Stack Dev</option>
+                    <option value="AI/ML & Data Science">AI/ML & Data Science</option>
+                    <option value="UI/UX Designing">UI/UX Designing</option>
+                    <option value="Video Editing">Video Editing</option>
+                </select>
+            </div>
+            <br>
+            <button class="btn btn-primary" id="sub">Submit</button>
+        </form>
+        <a href="./users.html">Show all Users</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let editIdx = localStorage.getItem("editIdx") || null;
+
+            if(editIdx){
+                let editUser = users[Number(editIdx)];
+
+                let name = document.getElementById("name");
+                let email = document.getElementById("email");
+                let course = document.getElementById("course");
+
+                name.value = editUser.name;
+                email.value = editUser.email;
+                course.value = editUser.course;
+            }
+
+            document.getElementById("form").addEventListener("submit",function(e){
+                e.preventDefault();//page doesnt refresh
+
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let course = document.getElementById("course").value;
+
+                let user = { name,email,course}
+
+                if(editIdx){
+                    users[editIdx] = user;
+                }else{
+                    users.push(user);
+                }
+                localStorage.setItem("users",JSON.stringify(users));
+                window.location = "./users.html";
+            })
+        })
+    </script>
+</body>
+</html>
