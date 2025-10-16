@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="d-flex gap-5">
+            <div class="box">
+                <form id="formdetails">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image - Url</label>
+                        <input type="text" class="form-control" id="image" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="text" class="form-control" id="price" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" aria-label="Default select example" id="category" required>
+                            <option selected>Select the Category</option>
+                            <option value="1">T-Shirts</option>
+                            <option value="2">Bottoms</option>
+                            <option value="3">Shoes</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <button id="add-products" class="btn btn-primary"> Add the Product </button>
+                    </div>
+                </form>
+            </div>
+            <div class="box box-1">
+                <h5 class="text-center text-decoration-underline">Product List</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded",function(){
+            
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+            let editIdx = localStorage.getItem("editIdx") || null;
+            let tbody = document.getElementById("tableBody");
+            
+            if(editIdx){
+                let editProduct = products[Number(editIdx)];
+                
+                let title = document.getElementById("title");
+                let price = document.getElementById("price");
+                let category = document.getElementById("category");
+                
+                title.value = editProduct.title;
+                price.value = editProduct.price;
+                category.value = editProduct.category;
+            }
+            
+            function deleteProduct(idx){
+                    products.splice(idx,1);
+    
+                    localStorage.setItem("products",JSON.stringify(products))
+    
+                    addProductToList();
+                }
+            function editProduct(idx){
+                localStorage.setItem("editIdx",idx);    
+            }
+            function addProductToList(){
+                tbody.innerHTML = "";
+                products.forEach((product, idx) => {
+                tbody.innerHTML +=`
+                    <tr>
+                        <td><img src="${product.imgUrl}" alt="${product.title}" class="img-fluid" style="max-width: 80px;"></td>
+                        <td>${product.title}</td>
+                        <td>$${product.price}</td>
+                        <td>${getCategoryName(product.category)}</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteProduct(${idx})">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                            <button class="btn btn-primary" onclick="editProduct(${idx})">
+                                <i class="ri-pencil-fill"></i>
+                            </button>
+                        </td>   
+                    </tr>
+                `;
+            });
+        }
+            function getCategoryName(value) {
+                switch (value) {
+                    case "1": 
+                        return "T-Shirts";
+                    case "2": 
+                        return "Bottoms";
+                    case "3": 
+                        return "Shoes";
+                }
+            }
+
+            document.getElementById("add-products").addEventListener("click",function(e){
+                e.preventDefault();
+                
+                let title = document.getElementById("title").value;
+                let imgUrl = document.getElementById("image").value;
+                let price = document.getElementById("price").value;
+                let category = document.getElementById("category").value;
+                
+                if(title.trim() == ""){
+                    Swal.fire("Enter the Product name!");
+                    return;
+                }
+                if(price.trim() == ""){
+                    Swal.fire("Enter the price of the product!");
+                    return;
+                }  
+                const product = {imgUrl,title,price,category}
+                if(editIdx){
+                    products[editIdx] = product;
+                    localStorage.removeItem("editIdx");
+                }else{
+                    products.push(product);
+                }
+                localStorage.setItem("products",JSON.stringify(products));
+
+                addProductToList();
+                document.getElementById("formdetails").reset();
+
+            })
+        })
+        </script>
+</body>
+</html>
