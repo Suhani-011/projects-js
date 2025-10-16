@@ -1,0 +1,23 @@
+
+@media (max-width: 768px) {
+    .row {
+        display: block;
+    }
+
+    .col-md-4, .col-md-6 {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .table th, .table td {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+}

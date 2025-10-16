@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="./assets/fonts/Bebas_Neue,Iceland/stylesheet.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Media CSS -->
+    <link rel="stylesheet" href="./assets/css/media.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-center text-light">STUDENT MANAGEMENT SYSTEM</h1>
+
+        <div class="form-section">
+            <h2 class="fw-bolder text-light">ADD STUDENT</h2>
+            <form id="studentForm">
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name" class="form-label head-font   ">Name <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter student name">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="grid" class="form-label head-font   ">GR ID <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="grid" placeholder="Enter GR ID">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="age" class="form-label head-font    ">Age <span class="required">*</span></label>
+                        <input type="number" class="form-control" id="age" placeholder="Enter age" min="1" max="100">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="course" class="form-label head-font ">Course :</label>
+                        <select class="form-select" id="course">
+                            <option value="">Select Course</option>
+                            <option value="Full Stack Development">Full Stack Development</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="AI/ML">AI/ML</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="gender" class="form-label head-font ">Gender :</label><br>
+                        <label for="male">Male</label>
+                        <input type="radio" name="gender" id="male" class="mx-3 form-check-input head-font  " value="Male">
+                        <label for="female">Female</label>
+                        <input type="radio" name="gender" id="female" class="mx-3 form-check-input head-font    " value="Female" checked>
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-add" id="addbtn">ADD STUDENT</button>
+                    <button type="reset" class="btn btn-clr" id="clrbtn">CLEAR</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="table-section">
+            <h2 class="fw-bolder text-light">STUDENT DATA</h2>
+            <div class="table-responsive">
+                <table class="table" id="studentTable">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            <th>GR ID</th>
+                            <th>Age</th>
+                            <th>Course</th>
+                            <th>Gender</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+
+
+                    </tbody>
+                </table>
+                <div id="noData" class="text-center">
+                    No students added yet.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    <script src="./assets/js/script.js"></script>
+    
+</body>
+</html>
